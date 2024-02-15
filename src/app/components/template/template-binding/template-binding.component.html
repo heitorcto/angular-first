@@ -1,0 +1,28 @@
+<p>template-binding works! {{ name }}</p>
+<h2>{{ age }}</h2>
+{{ age === 23 ? "ola" : "gud bai" }}
+<hr />
+
+<button [disabled]="isDisabled">Botao</button>
+<img [src]="srcValue" alt="Bla" />
+
+<p [attr.aria-label]="name">Heitor</p>
+
+<!-- testar com classes TAILWIND / asa vezes vai precisar buildar para dar certo! -->
+<p [class.color-red]="age > 12">{{ name }}</p>
+
+<button (click)="sum()">+</button>
+<button (click)="sub()">-</button>
+
+<input (keydown.shift.t)="onKeyDown($event)" />
+
+<div
+  style="background: red; height: 300px; width: 300px"
+  (mousemove)="onMouseEvent($event)"
+></div>
+
+<input [(ngModel)]="name" />
+
+<div [ngClass]="{ 'bg-red-200;': isDisabled }">
+  Classes
+</div>

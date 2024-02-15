@@ -1,0 +1,34 @@
+<p>consume-service works!</p>
+
+@if (getListTask(); as data) {
+  <ul>
+    @for(item of data; track item) {
+      <li>{{ item.id }} - {{ item.title }} - <button (click)="httpTaskDelete(item.id)">Deletar</button></li>
+    } @empty {
+      <li>Sem dados carregados!</li>
+    }
+  </ul>
+} @else {
+  <li>Loading...</li>
+}
+
+<h3>GET ITEM BY ID</h3>
+@if (getTaskid(); as data) {
+  <p>{{ data.id }} - {{ data.title }}</p>
+} @else {
+  {{ getTaskIdError() }}
+}
+
+<h3>POST CREATE</h3>
+<input type="text" #createTitle>
+<button (click)="httpTaskCreate(createTitle.value)">Create</button>
+@if (getTaskCreateError()) {
+  <p>{{ getTaskCreateError() }}</p>
+}
+
+
+<h3>PATCH UPDATE</h3>
+<input type="text" #updateId>
+<input type="text" #updateTitle>
+<button (click)="httpTaskUpdate(updateTitle.value, updateId.value)">Update</button>
+
